@@ -1,0 +1,52 @@
+html{
+    background-color: lightsteelblue;
+}
+
+/* Made with love by Mutiullah Samim*/
+
+/* @import url('https://fonts.googleapis.com/css?family=Numans'); */
+
+html,body{
+    background-image: url('https://images.squarespace-cdn.com/content/v1/5cd39bda38e67e0001551d29/1557375217221-GVXBMLO4ZK5K9FZ3T2OV/ke17ZwdGBToddI8pDm48kC0hV16SKsYPu0hlAiCz8woUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKc3BhJ7SDJNyD_NMmYWNjtWztpCoG_pUc5omYlkcBwuTtcJz3DCYgY6FWKTx-VmXrm/WebsiteCoverImage.jpg?format=1500w');
+    /* background-image: url('https://c.pxhere.com/photos/ec/2c/animal_equestrian_equine_fence_field_horse_jockey_mammal-1513631.jpg!d'); */
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+/* font-family: 'Numans', sans-serif; */
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+color:white;
+}
+
+
+/* .card-header h3{
+color: white;
+} */
+
+.input-group{
+    margin: 5px;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.links a{
+margin-left: 4px;
+}
+
