@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+	<div class="container">
+		<a
+			class="navbar-brand"
+			[routerLink]="['/home']"
+			[routerLinkActive]="'active'"
+			>Horse Show Entries</a
+		>
+
+		<div>
+			<!-- Toggler/collapsibe Button -->
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarTogglerDemo01"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+
+		<!-- Navbar links -->
+		<div
+			class="collapse navbar-collapse text-center"
+			id="navbarSupportedContent"
+		>
+			<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						[routerLink]="['/home']"
+						[routerLinkActive]="'active'"
+						>Home</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="SchedulePage.html">Schedule</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="ResultsPage.html">Results</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						[routerLink]="['/contact']"
+						[routerLinkActive]="'active'"
+						>Contact</a
+					>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Join a Club</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav mb-2 mb-lg-0">
+				<li class="nav-item ml-lg-3 d-none d-md-inline">
+					<a class="btn btn-outline-primary" href="LogonPage.html"
+						>Sign in</a
+					>
+				</li>
+				<li class="nav-item ml-lg-3 d-none d-md-inline">
+					<a
+						class="btn btn-outline-secondary"
+						href="RegistrationPage.html"
+						>Register</a
+					>
+				</li>
+				<li class="nav-item ml-lg-3 d-inline d-md-none">
+					<a class="nav-link" href="LogonPage.html">Sign in</a>
+				</li>
+				<li class="nav-item ml-lg-3 d-inline d-md-none">
+					<a class="nav-link" href="RegistrationPage.html"
+						>Register</a
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
