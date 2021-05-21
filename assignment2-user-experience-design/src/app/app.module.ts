@@ -7,7 +7,7 @@ import { HeaderComponent } from "./structure/header/header.component";
 import { FooterComponent } from "./structure/footer/footer.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { ContactComponent } from "./pages/contact/contact.component";
-import { DataTablesModule } from "angular-datatables";
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
 	declarations: [
@@ -16,8 +16,9 @@ import { DataTablesModule } from "angular-datatables";
 		FooterComponent,
 		HomeComponent,
 		ContactComponent,
+  SafePipe,
 	],
-	imports: [BrowserModule, AppRoutingModule, DataTablesModule],
+	imports: [BrowserModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
