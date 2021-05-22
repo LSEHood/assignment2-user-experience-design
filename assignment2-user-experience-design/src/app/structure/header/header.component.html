@@ -48,23 +48,33 @@
 			</ul>
 			<ul class="navbar-nav mb-2 mb-lg-0">
 				<li class="nav-item ml-lg-3 d-none d-md-inline">
-					<a class="btn btn-outline-primary" href="LogonPage.html"
+					<a
+						class="btn btn-outline-primary"
+						[routerLink]="['/signin']"
+						[routerLinkActive]="'active'"
 						>Sign in</a
 					>
 				</li>
 				<li class="nav-item ml-lg-3 d-none d-md-inline">
 					<a
 						class="btn btn-outline-secondary"
-						href="RegistrationPage.html"
+						[routerLink]="['/register']"
+						[routerLinkActive]="'active'"
 						>Register</a
 					>
 				</li>
 				<li class="nav-item ml-lg-3 d-inline d-md-none">
-					<a class="nav-link" href="LogonPage.html">Sign in</a>
+					<a
+						class="nav-link"
+						[routerLink]="['/signin']"
+						[routerLinkActive]="'active'">Sign in</a
+					>
 				</li>
 				<li class="nav-item ml-lg-3 d-inline d-md-none">
-					<a class="nav-link" href="RegistrationPage.html"
-						>Register</a
+					<a
+						class="nav-link"
+						[routerLink]="['/register']"
+						[routerLinkActive]="'active'">Register</a
 					>
 				</li>
 			</ul>

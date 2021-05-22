@@ -8,6 +8,8 @@ import { FooterComponent } from "./structure/footer/footer.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { SafePipe } from './pipes/safe.pipe';
+import { SigninComponent } from './pages/signin/signin.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
 	declarations: [
@@ -16,7 +18,9 @@ import { SafePipe } from './pipes/safe.pipe';
 		FooterComponent,
 		HomeComponent,
 		ContactComponent,
-  SafePipe,
+		SafePipe,
+		SigninComponent,
+  		RegisterComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],
