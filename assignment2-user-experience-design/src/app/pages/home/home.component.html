@@ -1,131 +1,299 @@
 <div class="container h-100">
-<div class="row mt-3">
-
-	<div class="col-auto">
-		<div class="btn-group" role="group">
+	<div class="row mt-3">
+		<div class="col-auto">
 			<div class="btn-group" role="group">
-			  <button id="statusMenu" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Status
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="statusMenu">
-				<button (click)="processStatusSelection(status)" *ngFor="let status of possibeShowStatus" class="dropdown-item {{ filter_status.indexOf(status) > -1 ? 'active' : '' }}">{{ status }}</button>
-			  </div>
-			</div>
-		  </div>
-	</div>
-
-	<div class="col-auto">
-		<div class="btn-group" role="group">
-			<div class="btn-group" role="group">
-			  <button id="areaMenu" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Area
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="areaMenu">
-				<button (click)="processAreaSelection(area.value)" *ngFor="let area of possibleShowAreas" class="dropdown-item {{ filter_area.indexOf(area.value) > -1 ? 'active' : '' }}" [disabled]="!area.selectable">{{ area.value }}</button>
-			  </div>
-			</div>
-		  </div>
-	</div>
-
-	<div class="col-auto">
-		<div class="btn-group" role="group">
-			<div class="btn-group" role="group">
-			  <button id="disciplineMenu" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Discipline
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="disciplineMenu">
-				<button (click)="processDisciplineSelection(discipline)" *ngFor="let discipline of possibleShowDisciplines" class="dropdown-item {{ filter_discipline.indexOf(discipline) > -1 ? 'active' : '' }}">{{ discipline }}</button>
-			  </div>
+				<div class="btn-group" role="group">
+					<button
+						id="statusMenu"
+						type="button"
+						class="btn btn-secondary dropdown-toggle"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Status
+					</button>
+					<div class="dropdown-menu" aria-labelledby="statusMenu">
+						<button
+							(click)="processStatusSelection(status)"
+							*ngFor="let status of possibeShowStatus"
+							class="dropdown-item {{
+								filter_status.indexOf(status) > -1
+									? 'active'
+									: ''
+							}}"
+						>
+							{{ status }}
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div *ngIf="filter_discipline.indexOf('Eventing') > -1" class="col-auto">
-		<div class="btn-group" role="group">
+		<div class="col-auto">
 			<div class="btn-group" role="group">
-			  <button id="eventingLevelMenu" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Level
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="eventingLevelMenu">
-				<button (click)="processLevelSelection(level)" *ngFor="let level of possibleShowLevelsEventing" class="dropdown-item {{ filter_level.indexOf(level) > -1 ? 'active' : '' }}">{{ level }}</button>
-			  </div>
+				<div class="btn-group" role="group">
+					<button
+						id="areaMenu"
+						type="button"
+						class="btn btn-secondary dropdown-toggle"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Area
+					</button>
+					<div class="dropdown-menu" aria-labelledby="areaMenu">
+						<button
+							(click)="processAreaSelection(area.value)"
+							*ngFor="let area of possibleShowAreas"
+							class="dropdown-item {{
+								filter_area.indexOf(area.value) > -1
+									? 'active'
+									: ''
+							}}"
+							[disabled]="!area.selectable"
+						>
+							{{ area.value }}
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div *ngIf="
-		(filter_discipline.indexOf('Show Jumping') > -1)
-		|| (filter_discipline.indexOf('Show Hunter') > -1)
-		|| (filter_discipline.indexOf('Derby') > -1)" class="col-auto">
-		<div class="btn-group" role="group">
+		<div class="col-auto">
 			<div class="btn-group" role="group">
-			  <button id="showjumpingLevelMenu" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Level
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="showjumpingLevelMenu">
-				<button (click)="processLevelSelection(level)" *ngFor="let level of possibleShowLevelsShowjumping" class="dropdown-item {{ filter_level.indexOf(level) > -1 ? 'active' : '' }}">{{ level }}</button>
-			  </div>
+				<div class="btn-group" role="group">
+					<button
+						id="disciplineMenu"
+						type="button"
+						class="btn btn-secondary dropdown-toggle"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Discipline
+					</button>
+					<div class="dropdown-menu" aria-labelledby="disciplineMenu">
+						<button
+							(click)="processDisciplineSelection(discipline)"
+							*ngFor="let discipline of possibleShowDisciplines"
+							class="dropdown-item {{
+								filter_discipline.indexOf(discipline) > -1
+									? 'active'
+									: ''
+							}}"
+						>
+							{{ discipline }}
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div *ngIf="(filter_discipline.indexOf('Dressage') > -1)" class="col-auto">
-		<div class="btn-group" role="group">
+		<div
+			*ngIf="filter_discipline.indexOf('Eventing') > -1"
+			class="col-auto"
+		>
 			<div class="btn-group" role="group">
-			  <button id="dressageLevelMenu" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Level
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="dressageLevelMenu">
-				<button (click)="processLevelSelection(level)" *ngFor="let level of possibleShowLevelsDressage" class="dropdown-item {{ filter_level.indexOf(level) > -1 ? 'active' : '' }}">{{ level }}</button>
-			  </div>
+				<div class="btn-group" role="group">
+					<button
+						id="eventingLevelMenu"
+						type="button"
+						class="btn btn-secondary dropdown-toggle"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Level
+					</button>
+					<div
+						class="dropdown-menu"
+						aria-labelledby="eventingLevelMenu"
+					>
+						<button
+							(click)="processLevelSelection(level)"
+							*ngFor="let level of possibleShowLevelsEventing"
+							class="dropdown-item {{
+								filter_level.indexOf(level) > -1 ? 'active' : ''
+							}}"
+						>
+							{{ level }}
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
+		<div
+			*ngIf="
+				filter_discipline.indexOf('Show Jumping') > -1 ||
+				filter_discipline.indexOf('Show Hunter') > -1 ||
+				filter_discipline.indexOf('Derby') > -1
+			"
+			class="col-auto"
+		>
+			<div class="btn-group" role="group">
+				<div class="btn-group" role="group">
+					<button
+						id="showjumpingLevelMenu"
+						type="button"
+						class="btn btn-secondary dropdown-toggle"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Level
+					</button>
+					<div
+						class="dropdown-menu"
+						aria-labelledby="showjumpingLevelMenu"
+					>
+						<button
+							(click)="processLevelSelection(level)"
+							*ngFor="let level of possibleShowLevelsShowjumping"
+							class="dropdown-item {{
+								filter_level.indexOf(level) > -1 ? 'active' : ''
+							}}"
+						>
+							{{ level }}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			*ngIf="filter_discipline.indexOf('Dressage') > -1"
+			class="col-auto"
+		>
+			<div class="btn-group" role="group">
+				<div class="btn-group" role="group">
+					<button
+						id="dressageLevelMenu"
+						type="button"
+						class="btn btn-secondary dropdown-toggle"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false"
+					>
+						Level
+					</button>
+					<div
+						class="dropdown-menu"
+						aria-labelledby="dressageLevelMenu"
+					>
+						<button
+							(click)="processLevelSelection(level)"
+							*ngFor="let level of possibleShowLevelsDressage"
+							class="dropdown-item {{
+								filter_level.indexOf(level) > -1 ? 'active' : ''
+							}}"
+						>
+							{{ level }}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="row mt-1 mb-3">
-
-	<div class="col-12 col-lg-6 mt-3" *ngFor="let show of filteredShows; let index = index">
-		<div class="card mb-3">
-			<div class="row no-gutters">
-				<div #mapCont class="col-4">
-
-				</div>
-				<div class="col-8">
-					<div class="card-body">
-						<h5 class="card-title">{{ show.name }}</h5>
-						<div class="card-text mt-2"><strong>Date: </strong>{{ show.date | date: 'mediumDate' }}</div>
-						<div class="card-text mt-2"><strong>Status: </strong>{{ show.status }}</div>
-						<div class="card-text mt-2"><strong>Entries close: </strong>{{ show.closes | date: 'mediumDate' }}</div>
-						<div class="card-text mt-2"><strong>Discipline: </strong>{{ show.discipline }}</div>
-						<div class="card-text mt-2"><strong>Location: </strong>{{ show.location }}</div>
-						<div class="card-text mt-2"><strong>Area: </strong>{{ show.area }}</div>
-						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							<div class="btn-group mr-2 mt-2" role="group">
-								<button type="button" data-toggle="modal" [attr.data-target]="'#' + show.uid + 'myModal'" class="btn btn-sm btn-secondary">View Schedule</button>
+		<div
+			class="col-12 col-lg-6 mt-3"
+			*ngFor="let show of filteredShows; let index = index"
+		>
+			<div class="card mb-3">
+				<div class="row no-gutters">
+					<div #mapCont class="col-4"></div>
+					<div class="col-8">
+						<div class="card-body">
+							<h5 class="card-title">{{ show.name }}</h5>
+							<div class="card-text mt-2">
+								<strong>Date: </strong
+								>{{ show.date | date: "mediumDate" }}
 							</div>
-							<div class="btn-group mr-2 mt-2" role="group">
-								<button type="button" class="btn btn-sm btn-success" [disabled]="show.status != 'Open'">Sign Up</button>
+							<div class="card-text mt-2">
+								<strong>Status: </strong>{{ show.status }}
 							</div>
-							<div class="btn-group mr-2 mt-2" role="group">
-								<button type="button" class="btn btn-sm btn-info">More Info</button>
+							<div class="card-text mt-2">
+								<strong>Entries close: </strong
+								>{{ show.closes | date: "mediumDate" }}
+							</div>
+							<div class="card-text mt-2">
+								<strong>Discipline: </strong
+								>{{ show.discipline }}
+							</div>
+							<div class="card-text mt-2">
+								<strong>Location: </strong>{{ show.location }}
+							</div>
+							<div class="card-text mt-2">
+								<strong>Area: </strong>{{ show.area }}
+							</div>
+							<div
+								class="btn-toolbar"
+								role="toolbar"
+								aria-label="Toolbar with button groups"
+							>
+								<div class="btn-group mr-2 mt-2" role="group">
+									<button
+										type="button"
+										data-toggle="modal"
+										[attr.data-target]="
+											'#' + show.uid + 'myModal'
+										"
+										class="btn btn-sm btn-secondary"
+									>
+										View Schedule
+									</button>
+								</div>
+								<div class="btn-group mr-2 mt-2" role="group">
+									<button
+										type="button"
+										class="btn btn-sm btn-success"
+										[disabled]="show.status != 'Open'"
+									>
+										Sign Up
+									</button>
+								</div>
+								<div class="btn-group mr-2 mt-2" role="group">
+									<button
+										type="button"
+										class="btn btn-sm btn-info"
+									>
+										More Info
+									</button>
+								</div>
+							</div>
+							<div
+								class="modal fade in"
+								[id]="show.uid + 'myModal'"
+							>
+								<div class="modal-dialog modal-xl">
+									<div class="modal-content">
+										<div class="modal-body">
+											<div
+												class="
+													embed-responsive
+													embed-responsive-4by3
+												"
+											>
+												<iframe
+													class="
+														embed-responsive-item
+													"
+													[src]="
+														show.schedule_url | safe
+													"
+													frameborder="0"
+												></iframe>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="modal fade in" [id]="show.uid + 'myModal'">
-							<div class="modal-dialog modal-xl">
-							  <div class="modal-content">
-								<div class="modal-body">
-									<div class="embed-responsive embed-responsive-4by3">
-										<iframe class="embed-responsive-item" [src]="show.schedule_url | safe" frameborder="0"></iframe>
-									  </div>
-
-								</div>
-							  </div>
-							</div>
-						  </div>
 					</div>
-				</div>
 				</div>
 			</div>
 		</div>

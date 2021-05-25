@@ -1,39 +1,61 @@
-<div class="container">
-	<div class="row">
-		<div class="col-6 ">
-			<div class="card mt-4">
-				<form class="form-signin" method="POST">
-					<fieldset>
-						<legend class="text-center header">Please sign in</legend>
+<div class="container h-100">
+	<div class="row h-100 justify-content-center align-items-center">
+		<div class="col-md-8">
+			<div class="bg-shadow text-white p-3">
+				<form method="POST">
+					<h3 class="text-center header pb-2">Please Sign In</h3>
 
-						<div class="form-group">
-							<div class="col">
-								<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-							</div>
+					<div class="form-group">
+						<input
+							type="email"
+							id="inputEmail"
+							class="form-control"
+							placeholder="Email address"
+							required
+							autofocus
+						/>
+					</div>
+
+					<div class="form-group">
+						<input
+							type="password"
+							id="inputPassword"
+							class="form-control"
+							placeholder="Password"
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<input type="checkbox" value="remember-me" /> &nbsp;
+						Remember me
+					</div>
+
+					<div class="form-group">
+						<button class="btn btn-primary btn-block" type="submit">
+							Sign In
+						</button>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<a
+								class="btn btn-info btn-block"
+								[routerLink]="['/register']"
+								[routerLinkActive]="'active'"
+							>
+								Register</a
+							>
 						</div>
 
-						<div class="form-group">
-							<div class="col">
-								<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-							</div>
+						<div class="col">
+							<a class="btn btn-warning btn-block" href="#"
+								>Forgot your password?</a
+							>
 						</div>
-
-						<div class="form-group">
-							<div class="col">
-								<input type="checkbox" value="remember-me"> Remember me
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col">
-								<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-
-

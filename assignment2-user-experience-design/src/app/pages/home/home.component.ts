@@ -1,9 +1,17 @@
-import { AfterViewInit, Component, ContentChildren, ElementRef, OnInit, QueryList, ViewChildren } from "@angular/core";
-import 'ol/ol.css';
-import {Map, View} from 'ol';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
-import {fromLonLat} from 'ol/proj';
+import {
+	AfterViewInit,
+	Component,
+	ContentChildren,
+	ElementRef,
+	OnInit,
+	QueryList,
+	ViewChildren,
+} from "@angular/core";
+import "ol/ol.css";
+import { Map, View } from "ol";
+import TileLayer from "ol/layer/Tile";
+import OSM from "ol/source/OSM";
+import { fromLonLat } from "ol/proj";
 
 @Component({
 	selector: "app-home",
@@ -11,8 +19,7 @@ import {fromLonLat} from 'ol/proj';
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-
-	@ViewChildren('mapCont') viewChildren!: QueryList<ElementRef>;
+	@ViewChildren("mapCont") viewChildren!: QueryList<ElementRef>;
 
 	public shows = [];
 
@@ -23,54 +30,103 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 	constructor() {}
 
-	possibeShowStatus =["Open", "Closed", "Full", "Completed"];
+	possibeShowStatus = ["Open", "Closed", "Full", "Completed"];
 
-	possibleShowAreas =[
-		{selectable: false, value:"North Island"},
-		{selectable: true, value:"Northland"},
-		{selectable: true, value:"Auckland"},
-		{selectable: true, value:"Waikato"},
-		{selectable: true, value:"Bay of Plenty"},
-		{selectable: true, value:"Gisborne"},
-		{selectable: true, value:"Hawke’s Bay"},
-		{selectable: true, value:"Manawatu Wanganui"},
-		{selectable: true, value:"Taranaki"},
-		{selectable: true, value:"Whanganui"},
-		{selectable: true, value:"Wairarapa"},
-		{selectable: true, value:"Wellington"},
-		{selectable: false, value:"South Island"},
-		{selectable: true, value:"Nelson"},
-		{selectable: true, value:"Marlborough"},
-		{selectable: true, value:"Tasman"},
-		{selectable: true, value:"West Coast"},
-		{selectable: true, value:"Timaru"},
-		{selectable: true, value:"Oamaru"},
-		{selectable: true, value:"Canterbury"},
-		{selectable: true, value:"Otago"},
-		{selectable: true, value:"Southland"}
+	possibleShowAreas = [
+		{ selectable: false, value: "North Island" },
+		{ selectable: true, value: "Northland" },
+		{ selectable: true, value: "Auckland" },
+		{ selectable: true, value: "Waikato" },
+		{ selectable: true, value: "Bay of Plenty" },
+		{ selectable: true, value: "Gisborne" },
+		{ selectable: true, value: "Hawke’s Bay" },
+		{ selectable: true, value: "Manawatu Wanganui" },
+		{ selectable: true, value: "Taranaki" },
+		{ selectable: true, value: "Whanganui" },
+		{ selectable: true, value: "Wairarapa" },
+		{ selectable: true, value: "Wellington" },
+		{ selectable: false, value: "South Island" },
+		{ selectable: true, value: "Nelson" },
+		{ selectable: true, value: "Marlborough" },
+		{ selectable: true, value: "Tasman" },
+		{ selectable: true, value: "West Coast" },
+		{ selectable: true, value: "Timaru" },
+		{ selectable: true, value: "Oamaru" },
+		{ selectable: true, value: "Canterbury" },
+		{ selectable: true, value: "Otago" },
+		{ selectable: true, value: "Southland" },
 	];
 
-	possibleShowDisciplines =["Dressage","Show Jumping","Show Hunter","Eventing","Derby","Training days","Western","A&P Showing","Ribbon Days","Para","Closed Pony club events","Mounted Games"];
+	possibleShowDisciplines = [
+		"Dressage",
+		"Show Jumping",
+		"Show Hunter",
+		"Eventing",
+		"Derby",
+		"Training days",
+		"Western",
+		"A&P Showing",
+		"Ribbon Days",
+		"Para",
+		"Closed Pony club events",
+		"Mounted Games",
+	];
 
-	possibleShowLevelsEventing =["Intro (65cm)","Pre-training (80cm)","Training (95cm)","Open (105cm)"];
+	possibleShowLevelsEventing = [
+		"Intro (65cm)",
+		"Pre-training (80cm)",
+		"Training (95cm)",
+		"Open (105cm)",
+	];
 
-	possibleShowLevelsShowjumping =["X Bar","40cm","50cm","60cm","70cm","80cm","90cm","100cm","105cm","110cm","115cm","120cm","125cm","130cm"];
+	possibleShowLevelsShowjumping = [
+		"X Bar",
+		"40cm",
+		"50cm",
+		"60cm",
+		"70cm",
+		"80cm",
+		"90cm",
+		"100cm",
+		"105cm",
+		"110cm",
+		"115cm",
+		"120cm",
+		"125cm",
+		"130cm",
+	];
 
-	possibleShowLevelsDressage =["Introductory (Non-graded)","Preliminary (level 1)","Novice (Level 2)","Elementary (Level 3)","Medium (Level 4)","Advanced Medium (Level 5)","Advanced (Level 6)"];
+	possibleShowLevelsDressage = [
+		"Introductory (Non-graded)",
+		"Preliminary (level 1)",
+		"Novice (Level 2)",
+		"Elementary (Level 3)",
+		"Medium (Level 4)",
+		"Advanced Medium (Level 5)",
+		"Advanced (Level 6)",
+	];
 
 	get filteredShows() {
 		let filteredShows = this.shows;
 		if (this.filter_status.length > 0) {
-			filteredShows = filteredShows.filter(show => this.filter_status.indexOf(show.status) > -1);
+			filteredShows = filteredShows.filter(
+				(show) => this.filter_status.indexOf(show.status) > -1
+			);
 		}
 		if (this.filter_area.length > 0) {
-			filteredShows = filteredShows.filter(show => this.filter_area.indexOf(show.area) > -1);
+			filteredShows = filteredShows.filter(
+				(show) => this.filter_area.indexOf(show.area) > -1
+			);
 		}
 		if (this.filter_discipline.length > 0) {
-			filteredShows = filteredShows.filter(show => this.filter_discipline.indexOf(show.discipline) > -1);
+			filteredShows = filteredShows.filter(
+				(show) => this.filter_discipline.indexOf(show.discipline) > -1
+			);
 		}
 		if (this.filter_level.length > 0) {
-			filteredShows = filteredShows.filter(show => this.filter_level.indexOf(show.level) > -1);
+			filteredShows = filteredShows.filter(
+				(show) => this.filter_level.indexOf(show.level) > -1
+			);
 		}
 		return filteredShows;
 	}
@@ -94,22 +150,26 @@ export class HomeComponent implements OnInit, AfterViewInit {
 	}
 
 	processDisciplineSelection(discipline: string) {
-		const exists = this.filter_discipline.findIndex((item) => item === discipline);
+		const exists = this.filter_discipline.findIndex(
+			(item) => item === discipline
+		);
 		if (exists > -1) {
 			this.filter_discipline.splice(exists, 1);
-			if (['Eventing'].indexOf(discipline) > -1) {
+			if (["Eventing"].indexOf(discipline) > -1) {
 				this.filter_level = this.filter_level.filter((el) => {
-					return this.possibleShowLevelsEventing.indexOf( el ) < 0;
+					return this.possibleShowLevelsEventing.indexOf(el) < 0;
 				});
 			}
-			if (['Show Jumping', 'Dressage', 'Derby'].indexOf(discipline) > -1) {
+			if (
+				["Show Jumping", "Dressage", "Derby"].indexOf(discipline) > -1
+			) {
 				this.filter_level = this.filter_level.filter((el) => {
-					return this.possibleShowLevelsShowjumping.indexOf( el ) < 0;
+					return this.possibleShowLevelsShowjumping.indexOf(el) < 0;
 				});
 			}
-			if (['Dressage'].indexOf(discipline) > -1) {
+			if (["Dressage"].indexOf(discipline) > -1) {
 				this.filter_level = this.filter_level.filter((el) => {
-					return this.possibleShowLevelsDressage.indexOf( el ) < 0;
+					return this.possibleShowLevelsDressage.indexOf(el) < 0;
 				});
 			}
 		} else {
@@ -127,11 +187,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 	}
 
 	randomString(len) {
-		const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-		var randomString = '';
+		const charSet =
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		var randomString = "";
 		for (var i = 0; i < len; i++) {
 			var randomPoz = Math.floor(Math.random() * charSet.length);
-			randomString += charSet.substring(randomPoz,randomPoz+1);
+			randomString += charSet.substring(randomPoz, randomPoz + 1);
 		}
 		return randomString;
 	}
@@ -141,116 +202,124 @@ export class HomeComponent implements OnInit, AfterViewInit {
 			this.shows = [
 				{
 					uid: this.randomString(5),
-					name: 'Prydes EasiFeed Winter Show Hunter Series - Day 2',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Open',
-					discipline: 'Show Hunter',
-					location: 'Woodhill Sands',
-					area: 'Helensville',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/Prydes%20Winter%20Show%20Hunter%20series%202021.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43778',
-					level: '50cm'
+					name: "Prydes EasiFeed Winter Show Hunter Series - Day 2",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Open",
+					discipline: "Show Hunter",
+					location: "Woodhill Sands",
+					area: "Helensville",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/Prydes%20Winter%20Show%20Hunter%20series%202021.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43778",
+					level: "50cm",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'Prydes EasiFeed Winter Show Hunter Series - Day 3',
-					closes: new Date('2021-05-22'),
-					date: new Date('2021-06-01'),
-					status: 'Open',
-					discipline: 'Show Hunter',
-					location: 'Woodhill Sands',
-					area: 'Auckland',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/Prydes%20Winter%20Show%20Hunter%20series%202021.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43778',
-					level: '70cm'
+					name: "Prydes EasiFeed Winter Show Hunter Series - Day 3",
+					closes: new Date("2021-05-22"),
+					date: new Date("2021-06-01"),
+					status: "Open",
+					discipline: "Show Hunter",
+					location: "Woodhill Sands",
+					area: "Auckland",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/Prydes%20Winter%20Show%20Hunter%20series%202021.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43778",
+					level: "70cm",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'WRC Dressage series Day 1',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Completed',
-					discipline: 'Dressage',
-					location: 'Pony Club',
-					area: 'Waikato',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43778',
-					level: 'Introductory (Non-graded)'
+					name: "WRC Dressage series Day 1",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Completed",
+					discipline: "Dressage",
+					location: "Pony Club",
+					area: "Waikato",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43778",
+					level: "Introductory (Non-graded)",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'PC Teams',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Full',
-					discipline: 'Closed Pony Club Events',
-					location: 'Pony Club',
-					area: 'Southland',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43732',
-					level: 'Introductory (Non-graded)'
+					name: "PC Teams",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Full",
+					discipline: "Closed Pony Club Events",
+					location: "Pony Club",
+					area: "Southland",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43732",
+					level: "Introductory (Non-graded)",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'Show name',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Completed',
-					discipline: 'Derby',
-					location: 'Show grounds',
-					area: 'Southland',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf',
-					longitude: '-45.848916',
-					latitude: '167.6755',
-					level: 'Introductory (Non-graded)'
+					name: "Show name",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Completed",
+					discipline: "Derby",
+					location: "Show grounds",
+					area: "Southland",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf",
+					longitude: "-45.848916",
+					latitude: "167.6755",
+					level: "Introductory (Non-graded)",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'Show name',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Closed',
-					discipline: 'A&P Showing',
-					location: 'Woodhill Sands',
-					area: 'Dargavill',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43723',
-					level: 'Introductory (Non-graded)'
+					name: "Show name",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Closed",
+					discipline: "A&P Showing",
+					location: "Woodhill Sands",
+					area: "Dargavill",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43723",
+					level: "Introductory (Non-graded)",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'Show name',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Open',
-					discipline: 'Eventing',
-					location: 'Escott Equestrain',
-					area: 'Auckland',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43723',
-					level: 'Intro (65cm)'
+					name: "Show name",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Open",
+					discipline: "Eventing",
+					location: "Escott Equestrain",
+					area: "Auckland",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43723",
+					level: "Intro (65cm)",
 				},
 				{
 					uid: this.randomString(5),
-					name: 'Show name',
-					closes: new Date('2021-04-22'),
-					date: new Date('2021-05-01'),
-					status: 'Open',
-					discipline: 'Ribbon Days',
-					location: 'Facility',
-					area: 'South Auckland',
-					schedule_url: 'https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf',
-					longitude: '-36.72735',
-					latitude: '174.43744',
-					level: 'Introductory (Non-graded)'
-				}
+					name: "Show name",
+					closes: new Date("2021-04-22"),
+					date: new Date("2021-05-01"),
+					status: "Open",
+					discipline: "Ribbon Days",
+					location: "Facility",
+					area: "South Auckland",
+					schedule_url:
+						"https://s3.amazonaws.com/EquestrianEntries/Schedules/NI%20SS%20Two%20Day%20Event.pdf",
+					longitude: "-36.72735",
+					latitude: "174.43744",
+					level: "Introductory (Non-graded)",
+				},
 			];
 		}, 200);
 	}
@@ -259,21 +328,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
 		this.viewChildren.changes.subscribe((children) => {
 			for (let index = 0; index < children.length; index++) {
 				const element = children.get(index).nativeElement;
-				children.get(index).nativeElement.innerHTML = '';
+				children.get(index).nativeElement.innerHTML = "";
 				const map = new Map({
 					target: element,
 					layers: [
-					  new TileLayer({
-						source: new OSM()
-					  })
+						new TileLayer({
+							source: new OSM(),
+						}),
 					],
 					controls: [],
 					view: new View({
-					  center: fromLonLat([this.shows[index].latitude, this.shows[index].longitude]),
-					  zoom: 8
-					})
+						center: fromLonLat([
+							this.shows[index].latitude,
+							this.shows[index].longitude,
+						]),
+						zoom: 8,
+					}),
 				});
 			}
-		  });
+		});
 	}
 }
