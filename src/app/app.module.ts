@@ -10,6 +10,8 @@ import { ContactComponent } from "./pages/contact/contact.component";
 import { SafePipe } from './pipes/safe.pipe';
 import { SigninComponent } from './pages/signin/signin.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ResultsComponent } from './pages/results/results.component';
+import { ClubsComponent } from './pages/clubs/clubs.component';
 
 @NgModule({
 	declarations: [
@@ -21,6 +23,8 @@ import { RegisterComponent } from './pages/register/register.component';
 		SafePipe,
 		SigninComponent,
   		RegisterComponent,
+    ResultsComponent,
+    ClubsComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule],
 	providers: [],
